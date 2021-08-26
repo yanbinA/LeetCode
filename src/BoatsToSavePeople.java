@@ -63,10 +63,4 @@ public class BoatsToSavePeople {
         }
         return count;
     }
-
-    public static void main(String[] args) {
-        System.out.println(numRescueBoats(new int[]{1, 2}, 3));
-        System.out.println(numRescueBoats(new int[]{1, 2, 3, 1}, 3));
-        System.out.println(numRescueBoats(new int[]{3, 5, 3, 4}, 5));
-    }
 }
