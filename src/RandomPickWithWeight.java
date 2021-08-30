@@ -81,25 +81,6 @@ public class RandomPickWithWeight {
             sum += weight.pickIndex();
         }
         System.out.println(sum + "/" + size);
-
-        int[] ints = {3, 17, 18, 25};
-
-        label:for (int target = 1; target <= 25; target++) {
-            int left = 0, right = ints.length - 1;
-            while (left < right) {
-                int mid = (left + right) / 2;
-                if (ints[mid] > target) {
-                    right = mid;
-                } else if (ints[mid] < target) {
-                    left = mid + 1;
-                } else {
-                    System.out.printf("target:%d>>mid:%d\n", target, mid);
-                    continue label;
-                }
-            }
-            System.out.printf("target:%d>>left:%d>>right:%d\n", target, left, right);
-        }
-
     }
 
 }
