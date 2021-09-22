@@ -1,6 +1,3 @@
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * 前缀树
  * Trie（发音类似 "try"）或者说 前缀树 是一种树形数据结构，用于高效地存储和检索字符串数据集中的键。这一数据结构有相当多的应用情景，例如自动补完和拼写检查。
@@ -16,56 +13,68 @@ import java.util.Map;
  * 链接：https://leetcode-cn.com/problems/implement-trie-prefix-tree
  */
 public class Trie {
-    private String word;
-    private Map<Character, Trie> children;
-    /** Initialize your data structure here. */
+    private TrieNode root;
+
     public Trie() {
-        this.word = "";
-        this.children = new HashMap<>(32);
+        root = new TrieNode();
     }
 
-    /** Inserts a word into the trie. */
+    // Inserts a word into the trie.
     public void insert(String word) {
-        Trie cur = this;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (!cur.children.containsKey(c)) {
-                cur.children.put(c, new Trie());
-            }
-            cur = cur.children.get(c);
-        }
-        cur.word = word;
+        root.insert(word, 0);
     }
 
-    /** Returns if the word is in the trie. */
+    // Returns if the word is in the trie.
     public boolean search(String word) {
-        Trie cur = this;
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (!cur.children.containsKey(c)) {
-                return false;
-            }
-            cur = cur.children.get(c);
-        }
-        return cur.word.equals(word);
+        TrieNode node = root.find(word, 0);
+        return (node != null && node.hasWord);
     }
 
-    /** Returns if there is any word in the trie that starts with the given prefix. */
+    // Returns if there is any word in the trie
+    // that starts with the given prefix.
     public boolean startsWith(String prefix) {
-        Trie cur = this;
-        for (int i = 0; i < prefix.length(); i++) {
-            char c = prefix.charAt(i);
-            if (!cur.children.containsKey(c)) {
-                return false;
-            }
-            cur = cur.children.get(c);
-        }
-        return true;
+        TrieNode node = root.find(prefix, 0);
+        return node != null;
     }
 
     public static void main(String[] args) {
         Trie trie = new Trie();
         trie.insert("apple");
         System.out.println(trie.search("apple"));
+    }
+}
+
+class TrieNode {
+    private TrieNode[] children;
+    public boolean hasWord;
+
+    public TrieNode() {
+        children = new TrieNode[26];
+        hasWord = false;
+    }
+
+    public void insert(String word, int index) {
+        if (index == word.length()) {
+            this.hasWord = true;
+            return;
+        }
+
+        int pos = word.charAt(index) - 'a';
+        if (children[pos] == null) {
+            children[pos] = new TrieNode();
+        }
+        children[pos].insert(word, index + 1);
+    }
+
+    public TrieNode find(String word, int index) {
+        if (index == word.length()) {
+            return this;
+        }
+
+        int pos = word.charAt(index) - 'a';
+        if (children[pos] == null) {
+            return null;
+        }
+        return children[pos].find(word, index + 1);
     }
 }
