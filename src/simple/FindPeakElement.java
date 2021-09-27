@@ -1,3 +1,5 @@
+package simple;
+
 /**
  * 寻找峰值
  *峰值元素是指其值严格大于左右相邻值的元素。
@@ -27,7 +29,6 @@ public class FindPeakElement {
             }
         }
         return right;
-
     }
 
     /**
