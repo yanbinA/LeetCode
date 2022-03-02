@@ -11,14 +11,19 @@
  */
 public class ZigzagConversion {
     public String convert(String s, int numRows) {
-        int length = s.length();
-        int size = numRows * 2 - 2, n = length / size, tail = length % size;
-        StringBuffer sb = new StringBuffer();
-        for (int i = 0; i < numRows; i++) {
-            for (int j = 0; j < n; j++) {
-                sb.append(s.charAt(j * size + i));
-            }
-
+        int length = s.length(), t = numRows * 2 - 2;
+        if (numRows == 1 || length <= numRows) {
+            return s;
         }
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < numRows; i++) {
+            for (int j = 0; j + i < length; j += t) {
+                sb.append(s.charAt(j + i));
+                if (0 < i && i < numRows - 1 && j + t - i < length) {
+                    sb.append(s.charAt(j + t - i));
+                }
+            }
+        }
+        return sb.toString();
     }
 }
