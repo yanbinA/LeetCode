@@ -1,7 +1,5 @@
 package continuous_subarray_sum;
 
-import com.sun.xml.internal.bind.v2.model.core.EnumLeafInfo;
-
 import java.util.*;
 
 public class ContinuousSubarraySum {
