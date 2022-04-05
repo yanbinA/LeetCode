@@ -1,6 +1,6 @@
 package simple;
 
-import org.junit.jupiter.api.Test;
+
 
 import java.util.Arrays;
 
@@ -14,7 +14,7 @@ import java.util.Arrays;
  * 链接：https://leetcode-cn.com/problems/find-first-and-last-position-of-element-in-sorted-array
  */
 public class FindFirstAndLastPosition {
-    @Test
+    
     public void test() {
         System.out.println(Arrays.toString(searchRange(new int[]{1, 1, 1}, 1)));
         System.out.println(Arrays.toString(searchRange(new int[]{1, 2, 3}, 1)));
