@@ -1,6 +1,6 @@
 package dp;
 
-import org.junit.jupiter.api.Test;
+
 
 /**
  * <h3>爬楼梯</h3>
@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
  * 注意：给定 n 是一个正整数。
  */
 public class ClimbingStairs {
-    @Test
+    
     public void test() {
         System.out.println(climbStairs(1));//1
         System.out.println(climbStairs(2));//11,2

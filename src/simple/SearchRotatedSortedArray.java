@@ -1,6 +1,6 @@
 package simple;
 
-import org.junit.jupiter.api.Test;
+
 
 /**
  * <h3>搜索旋转排序数组</h3>
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.Test;
  */
 public class SearchRotatedSortedArray {
 
-    @Test
+    
     public void test() {
         System.out.println(search(new int[]{4, 5, 6, 7, 8, 1, 2, 3}, 6));
         System.out.println(search(new int[]{4, 5, 6, 7, 8, 1, 2, 3}, 9));
