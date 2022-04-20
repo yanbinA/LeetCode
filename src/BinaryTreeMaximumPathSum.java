@@ -13,15 +13,7 @@ public class BinaryTreeMaximumPathSum {
     public int maxPathSum(TreeNode root) {
         //[1,2,3]
         // 9 -10 15 20 7
+        return 0;
     }
 
-    /**
-     * 剑指 Offer 42. 连续子数组的最大和
-     * 输入一个整型数组，数组中的一个或连续多个整数组成一个子数组。求所有子数组的和的最大值。
-     *
-     */
-    public int maxSubArray(int[] nums) {
-        int max = Integer.MIN_VALUE;
-
-    }
 }
