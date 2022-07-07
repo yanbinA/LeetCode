@@ -54,4 +54,21 @@ public class ReorderList {
         return p1;
     }
 
+    public static void main(String[] args) {
+        ThreadPoolExecutor poolExecutor = new ThreadPoolExecutor(5,
+                10,
+                5,
+                TimeUnit.SECONDS,
+                new ArrayBlockingQueue<>(10),
+                new ThreadPoolExecutor.AbortPolicy());
+        for (int i = 0; i < 100; i++) {
+            poolExecutor.execute(() -> System.out.println(Thread.currentThread().getName() + " " + new Date()));
+            try {
+                TimeUnit.SECONDS.sleep(5);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
 }
