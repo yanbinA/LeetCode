@@ -10,10 +10,22 @@ import common.TreeNode;
  * 给你一个二叉树的根节点 root ，返回其 最大路径和
  */
 public class BinaryTreeMaximumPathSum {
+    int max = -1001;
     public int maxPathSum(TreeNode root) {
-        //[1,2,3]
-        // 9 -10 15 20 7
-        return 0;
+        dfs(root);
+        return max;
+    }
+
+    private int dfs(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int left = dfs(root.left);
+        int right = dfs(root.right);
+        int maxChild = Math.max(left, right);
+        maxChild = root.val + Math.max(maxChild, 0);
+        this.max = Math.max(Math.max(maxChild, root.val + left + right), this.max);
+        return maxChild;
     }
 
 }
